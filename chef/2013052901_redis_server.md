@@ -86,7 +86,7 @@ end
 
 `redis_2_cookbook/attributes/default.rb`
 
-```
+```ruby
 # 作業用ディレクトリ
 default['redis']['work_dir'] = '/usr/local/src/redis/'
 
@@ -107,7 +107,7 @@ default['redis']['server_install_path'] = '/usr/local/bin/redis-server'
 
 `redis_2_cookbook/recipes/redis_install.rb`
 
-```
+```ruby
 # Debian 系と redhat 系の分岐が必要だけど...
 #package "tcl8.5" do
 #  action :install
