@@ -1,4 +1,4 @@
-servespec と jenkins でサーバー監視を試してみた
+serverspec と jenkins でサーバー監視を試してみた
 ==
 
 Chef Casual Talks Vol.3
@@ -8,7 +8,6 @@ Chef Casual Talks Vol.3
 
  * chef の話から離れてしまいますがご了承下さい
  * serverspec と jenkins を使ってサーバーの監視を行なってみたお話です
- * 私は rspec はちゃんと理解出来ていませんのでご了承下さい
 
 きっかけ
 ==
@@ -70,11 +69,8 @@ Chef Casual Talks Vol.3
 
 jenkins にジョブとして登録する。
 
-`新規ジョブ作成` をクリックして `フリースタイル・プロジェクトのビルド` を選択する。
-
-<p><span itemscope itemtype="http://schema.org/Photograph"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/i/inokara/20130609/20130609131007.png" alt="f:id:inokara:20130609131007p:plain" title="f:id:inokara:20130609131007p:plain" class="hatena-fotolife" itemprop="image"></span></p>
-
-`ビルド・トリガ` は `定期的に実行` にチェックを入れて `スケジュール` を設定する。
+ * `新規ジョブ作成` をクリックして `フリースタイル・プロジェクトのビルド` を選択する。
+ * `ビルド・トリガ` は `定期的に実行` にチェックを入れて `スケジュール` を設定する。
 
 <p><span itemscope itemtype="http://schema.org/Photograph"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/i/inokara/20130609/20130609130911.png" alt="f:id:inokara:20130609130911p:plain" title="f:id:inokara:20130609130911p:plain" class="hatena-fotolife" itemprop="image"></span></p>
 
@@ -94,7 +90,7 @@ jenkins にジョブとして登録する。
 
 <p><span itemscope itemtype="http://schema.org/Photograph"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/i/inokara/20130609/20130609131115.png" alt="f:id:inokara:20130609131115p:plain" title="f:id:inokara:20130609131115p:plain" class="hatena-fotolife" itemprop="image"></span></p>
 
-メリット
+良いと思う点
 ==
 
  * サーバー、クライアント共に小難しい監視システムを構築する手間が省ける
@@ -102,7 +98,7 @@ jenkins にジョブとして登録する。
  * クライアント側からの push 監視も可能（cron の結果を post で受け取る）
  * お手軽
 
-デメリット
+検討が必要な点
 ==
 
  * jenkins ユーザーでのログインを許可するなどセキュリティ面を検討する必要がある

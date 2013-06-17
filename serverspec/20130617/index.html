@@ -14,7 +14,7 @@
     </div>
 
 <div id="title" class="step" data-y="0" data-x="0">
-<h1>servespec と jenkins でサーバー監視を試してみた</h1>
+<h1>serverspec と jenkins でサーバー監視を試してみた</h1>
 
 <p>Chef Casual Talks Vol.3</p>
 
@@ -25,7 +25,6 @@
 <ul>
 <li>chef の話から離れてしまいますがご了承下さい</li>
 <li>serverspec と jenkins を使ってサーバーの監視を行なってみたお話です</li>
-<li>私は rspec はちゃんと理解出来ていませんのでご了承下さい</li>
 </ul>
 
 </div>
@@ -103,11 +102,10 @@
 
 <p>jenkins にジョブとして登録する。</p>
 
-<p><code>新規ジョブ作成</code> をクリックして <code>フリースタイル・プロジェクトのビルド</code> を選択する。</p>
-
-<p><span itemscope itemtype="http://schema.org/Photograph"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/i/inokara/20130609/20130609131007.png" alt="f:id:inokara:20130609131007p:plain" title="f:id:inokara:20130609131007p:plain" class="hatena-fotolife" itemprop="image"></span></p>
-
-<p><code>ビルド・トリガ</code> は <code>定期的に実行</code> にチェックを入れて <code>スケジュール</code> を設定する。</p>
+<ul>
+<li><code>新規ジョブ作成</code> をクリックして <code>フリースタイル・プロジェクトのビルド</code> を選択する。</li>
+<li><code>ビルド・トリガ</code> は <code>定期的に実行</code> にチェックを入れて <code>スケジュール</code> を設定する。</li>
+</ul>
 
 <p><span itemscope itemtype="http://schema.org/Photograph"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/i/inokara/20130609/20130609130911.png" alt="f:id:inokara:20130609130911p:plain" title="f:id:inokara:20130609130911p:plain" class="hatena-fotolife" itemprop="image"></span></p>
 
@@ -131,7 +129,7 @@
 
 </div>
 <div class="step" data-y="1600" data-x="1200">
-<h1>メリット</h1>
+<h1>良いと思う点</h1>
 
 <ul>
 <li>サーバー、クライアント共に小難しい監視システムを構築する手間が省ける</li>
@@ -142,7 +140,7 @@
 
 </div>
 <div class="step" data-y="1600" data-x="2400">
-<h1>デメリット</h1>
+<h1>検討が必要な点</h1>
 
 <ul>
 <li>jenkins ユーザーでのログインを許可するなどセキュリティ面を検討する必要がある</li>
