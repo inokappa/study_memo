@@ -29,16 +29,26 @@
 
 </div>
 <div class="step" data-y="0" data-x="2400">
-<h1>きっかけ</h1>
+<h1>自己紹介</h1>
 
 <ul>
-<li>とある友人の案件（サーバー 2 台）</li>
-<li>絶対イケるサービス（友人談）だからいろいろ心配</li>
-<li>監視必要</li>
+<li>川原洋平（@inokara）</li>
+<li>都内でインフラエンジニアをやってます</li>
+<li>Chef 好きですが永遠の初心者です</li>
 </ul>
 
 </div>
 <div class="step" data-y="0" data-x="3600">
+<h1>きっかけ</h1>
+
+<ul>
+<li>とある案件（サーバー 2 台）</li>
+<li>絶対イケるサービス（担当者談）だからいろいろ心配</li>
+<li>監視も設定して欲しいな</li>
+</ul>
+
+</div>
+<div class="step" data-y="0" data-x="4800">
 <h1>検討</h1>
 
 <ul>
@@ -53,7 +63,7 @@
 </ul>
 
 </div>
-<div class="step" data-y="0" data-x="4800">
+<div class="step" data-y="800" data-x="0">
 <h1>構成</h1>
 
 <p>以下のような感じ。</p>
@@ -63,7 +73,7 @@
 <p>図がちっちゃい。</p>
 
 </div>
-<div class="step" data-y="800" data-x="0">
+<div class="step" data-y="800" data-x="1200">
 <h1>準備（1）</h1>
 
 <p>まずは serverspec の準備をする。</p>
@@ -75,7 +85,7 @@
 <p>他にも <code>Apache</code> が稼働していたら <code>Apache</code> 用のテストを書く。</p>
 
 </div>
-<div class="step" data-y="800" data-x="1200">
+<div class="step" data-y="800" data-x="2400">
 <h1>準備（2）</h1>
 
 <p>も少しだけ serverspec 側を準備する。</p>
@@ -87,7 +97,7 @@
 <p><code>c.path = '/sbin:/usr/sbin'</code> を追加する。</p>
 
 </div>
-<div class="step" data-y="800" data-x="2400">
+<div class="step" data-y="800" data-x="3600">
 <h1>準備（3）</h1>
 
 <p>監視対象ホストの設定を行う。</p>
@@ -97,7 +107,7 @@
 <script src="https://gist.github.com/inokappa/5737533.js"></script>
 
 </div>
-<div class="step" data-y="800" data-x="3600">
+<div class="step" data-y="800" data-x="4800">
 <h1>準備（4）</h1>
 
 <p>jenkins にジョブとして登録する。</p>
@@ -112,7 +122,7 @@
 <p>また、 <code>シェルの実行</code> に以下のコマンドを記載する。また、必要に応じて <code>ビルド後の処理</code> を設定する。</p>
 
 </div>
-<div class="step" data-y="800" data-x="4800">
+<div class="step" data-y="1600" data-x="0">
 <h1>こんな感じになる（1）</h1>
 
 <p>図のようにジョブ（テストと称した監視）が登録されている。</p>
@@ -120,7 +130,7 @@
 <p><span itemscope itemtype="http://schema.org/Photograph"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/i/inokara/20130609/20130609131036.png" alt="f:id:inokara:20130609131036p:plain" title="f:id:inokara:20130609131036p:plain" class="hatena-fotolife" itemprop="image"></span></p>
 
 </div>
-<div class="step" data-y="1600" data-x="0">
+<div class="step" data-y="1600" data-x="1200">
 <h1>こんな感じになる（2）</h1>
 
 <p>コンソール出力は下記の通り。</p>
@@ -128,7 +138,7 @@
 <p><span itemscope itemtype="http://schema.org/Photograph"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/i/inokara/20130609/20130609131115.png" alt="f:id:inokara:20130609131115p:plain" title="f:id:inokara:20130609131115p:plain" class="hatena-fotolife" itemprop="image"></span></p>
 
 </div>
-<div class="step" data-y="1600" data-x="1200">
+<div class="step" data-y="1600" data-x="2400">
 <h1>良いと思う点</h1>
 
 <ul>
@@ -139,7 +149,7 @@
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="2400">
+<div class="step" data-y="1600" data-x="3600">
 <h1>検討が必要な点</h1>
 
 <ul>
@@ -150,7 +160,7 @@
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="3600">
+<div class="step" data-y="1600" data-x="4800">
 <h1>とは言え</h1>
 
 <p>お手軽にサーバーの監視をするなら serverspec と jenkins の組み合わせはオススメかも！</p>
