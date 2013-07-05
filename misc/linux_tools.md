@@ -1,9 +1,9 @@
-# Linux のデスクトップ環境を仕事で使う際の小技
-
 ## 概要
 
-  * Mac ではない Linux 環境を仕事で使う際の小技をシチュエーション別に整理した
-  * 一部は Mac でも使えるかもしれない
+ * Mac ではない Linux 環境を仕事で使う際の小技をシチュエーション別に整理した
+ * 一部は Mac でも使えるかもしれない 
+
+***
   
 ## デュアルディスプレイ
 
@@ -17,6 +17,8 @@ xrandr --output HDMI1 --mode 1920x1200 --left-of LVDS1
 ```
 
 `LVDS1` がノート PC  のモニタで `HDMI1` が外付けのモニタを示す。これを実行することでデュアルディスプレイ環境が設定される。ちなみに `--left-of` で `HDML1` は `LVDS1` の左に設置となる。
+
+***
 
 ## 作図
 
@@ -37,27 +39,133 @@ sudo pip install blockdiag
 
 #### 使ってみる
 
+以下のようなテキストファイルを作成する。
+
+```
+blockdiag {
+  orientation = portrait
+  //
+  A[label = "redis router"];
+  B[label = "redis 6379"];
+  C[label = "redis 6380"];
+  //
+  A -> B,C
+  //
+  group {
+    label = "redis server";
+    B; C;
+  }
+}
+```
+
 以下のようにテキストファイルを引数として `blockdiag` コマンドを実行する。
 
 ```
-blockdiag hoge
+blockdiag sample.diag
 ```
 
 正常に終了すると以下のような図が作成される。
 
-　![]()
+<p><span itemscope itemtype="http://schema.org/Photograph"><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/i/inokara/20130630/20130630115106.png" alt="f:id:inokara:20130630115106p:plain" title="f:id:inokara:20130630115106p:plain" class="hatena-fotolife" itemprop="image"></span></p>
 
-様々なオプションを引数として渡すことでフォントのサイズ等の変更を行うことが出来る。
+様々なオプションを引数として渡すことでフォントのサイズ等の変更を行うことが出来る。また、[ドキュメント](http://blockdiag.com/ja/blockdiag/)が充実しているのでイザという時にも安心！
 
-### graph-easy
+### [graph-easy](http://search.cpan.org/~tels/Graph-Easy/)
 
-Perl で書かれた作図ツール。
+Perl で書かれた作図ツール。アスキーアート以外にも HTML 等でも書き出せる。
 
 #### セットアップ
 
+Perl のパッケージは `cpanm` でインストールするのがナウいのかな...
+
+```
+cpanm install Graph::Easy
+```
+
+インストールしたらパスを通してあげるのがナウいのかな...
+
+```
+export PATH="$HOME/perl5/bin:$PATH"
+export PERL5LIB="$HOME/perl5/lib/perl5"
+```
+
 #### こんな感じで使う
 
+簡単な図であれワンライナーでなくてもいける。
 
-## こんな感じで…
+```
+echo "[ user ] --> [ proxy ] --> [ web1 ], [ web2 ]" | graph-easy
+```
 
-`Windows` や `Mac` と比較すると、どうしても一手間増えてしまうけど、その手間もスキルアップの一つとポジに捉えて暫くは頑張ってみようと思う。
+以下のようにアスキーアートで図が出来上がる。これはイイ。
+
+```
++------+     +-------+     +------+
+| user | --> | proxy | --> | web1 |
++------+     +-------+     +------+
+               |
+               |
+               v
+             +-------+
+             | web2  |
+             +-------+
+
+```
+
+## 情報収集
+
+情報収集は主に twitter ということでコマンドラインから twitter にアクセスするツールを二つほど。
+
+### [knife-twitter](https://github.com/higanworks/knife-twitter)
+
+[@sawanoboly](https://twitter.com/sawanoboly) さんが書かれた knife コマンドのプラグイン。
+
+#### インストール
+
+漢は黙って gem でインストール。
+
+```
+sudo gem knife-twitter --no-ri --no-rdoc -V
+```
+
+最近は `-V` を付けるのが個人的なブーム。
+
+#### こんな感じで使う。
+
+タイムラインの取得。
+
+```
+knife twitter tl
+```
+
+ポストは以下のように...。
+
+```
+knife twitter post -m "hogehoge"
+```
+
+### [termtter](https://github.com/jugyo/termtter)
+
+ターミナルから利用出来る Twitter クライアント。
+
+#### インストール
+
+knife-twitter と同様に漢は黙って gem でインストール。
+
+```
+sudo gem termtter --no-ri --no-rdoc -V
+```
+
+いやー、ほんま便利になりましたなー。
+
+#### 使ってみる
+
+コマンドプロンプトから `termtter` を実行すると、初回の場合にはブラウザが起動してアクセストークンの取得を行う。ブラウザ上に現れたトークンをプロンプトで待ち構える `termtter` に登録して利用を開始する。
+
+現在はタイムラインを追っかけることでしか利用していないが、仕事中でもイチイチ GUI なクライアントを立ち上げる手間が省けるのと Twitter 見てても仕事している感がある（笑）ので良い...かな。
+
+***
+
+## ということで…
+
+`Windows` や `Mac` と比較すると、どうしても一手間増えてしまうけど、その手間もスキルアップの一つとポジに捉えて暫くは頑張ってみようと思う。ちなみに、仕事はサボってはいない。
