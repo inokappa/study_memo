@@ -64,6 +64,7 @@
 
  * @pisatoshi さん
  * 事例
+ * [資料](https://speakerdeck.com/pisatoshi/elasticsearch-trial-and-error)
 
 ### 背景
 
@@ -158,6 +159,7 @@
 
  * @y_310 さん
  * from cookpad
+ * [資料](https://speakerdeck.com/y310/kibanaru-men)
 
 ### なぜ kibana
 
