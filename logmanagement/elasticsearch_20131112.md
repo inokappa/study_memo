@@ -11,6 +11,7 @@
  * Doorkeeper
  * メーリングリスト elasticsearch-jp
  * 書籍（洋書）
+ * [資料](http://blog.johtani.info/images/entries/20131112/About_es_routing.pdf)
 
 ### インデックスの構成
 
