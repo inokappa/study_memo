@@ -273,6 +273,7 @@
 
  * @yoshi_ken さん
  * リブセンス
+ * [資料](http://www.slideshare.net/y-ken/elasticsearch-kibnana-fluentd-management-tips)
 
 ### kibana3
 
