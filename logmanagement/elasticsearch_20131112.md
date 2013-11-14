@@ -2,6 +2,11 @@
 
 ***
 
+ * 第2回elasticsearch勉強会
+ * 2013/11/12 (火) 19:00 - 21:00
+
+***
+
 ## elasticssearch の routing 機能
 
 ### 自己紹介
@@ -12,6 +17,7 @@
  * メーリングリスト elasticsearch-jp
  * 書籍（洋書）
  * [資料](http://blog.johtani.info/images/entries/20131112/About_es_routing.pdf)
+ * [以前の資料](http://www.slideshare.net/JunOhtani/elasticsearch-pyfes-201207)
 
 ### インデックスの構成
 
@@ -53,9 +59,9 @@
  * 複数インデックスを 1 つのインデックスとして利用可能
  * 検索可能
 
-## 宿題、宣伝
+## 書籍の紹介
 
- * Solr 入門
+ * [[改訂新版] Apache Solr入門 ~オープンソース全文検索エンジン](http://www.amazon.co.jp/dp/4774161632/ref=as_li_qf_sp_asin_til?tag=johtani-22&camp=243&creative=1615&linkCode=as1&creativeASIN=4774161632&adid=17KQZ23Y7KA3MAJ86GPP&&ref-refURL=http%3A%2F%2Fblog.johtani.info%2Fblog%2F2013%2F11%2F12%2Felasticsearch-japan-user-meetup-no2%2F)
 
 ***
 
@@ -120,6 +126,7 @@
    * 登録後シャードを追加
 
  * データ型のコンフリクト
+  * 複数タイプ間の同一フィールド名に異なるデータ型をマッピング（出来てしまうのか...）
   * 検索出来なくなる
   * ソートキーを外すと検索出来るようになる
 
