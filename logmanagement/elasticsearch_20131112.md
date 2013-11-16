@@ -168,6 +168,7 @@
  * @y_310 さん
  * from cookpad
  * [資料](https://speakerdeck.com/y310/kibanaru-men)
+ * [blog](http://y310.hatenablog.com/entry/2013/11/16/230431)
 
 ### なぜ kibana
 
@@ -272,6 +273,10 @@
  * とにかく日付（Timezone）には注意が必要
  * ES のインデックスであれば kibana で読み込める
  * faset を利用してグラフ化している
+
+### 補足
+
+ * kibana に取り込むログは必ずしも logstash 形式（elasticsearch の index 名）である必要は無い
 
 ***
 
