@@ -59,7 +59,7 @@
  * 複数インデックスを 1 つのインデックスとして利用可能
  * 検索可能
 
-## 書籍の紹介
+### 書籍の紹介
 
  * [[改訂新版] Apache Solr入門 ~オープンソース全文検索エンジン](http://www.amazon.co.jp/dp/4774161632/ref=as_li_qf_sp_asin_til?tag=johtani-22&camp=243&creative=1615&linkCode=as1&creativeASIN=4774161632&adid=17KQZ23Y7KA3MAJ86GPP&&ref-refURL=http%3A%2F%2Fblog.johtani.info%2Fblog%2F2013%2F11%2F12%2Felasticsearch-japan-user-meetup-no2%2F)
 
