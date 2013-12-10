@@ -9,7 +9,16 @@
 
 ***
 
-## Amazon Redshift & EMR & CloudTrail を  TableauDesktop
+## 資料
+
+ * [6 リージョン同時 75 万接続のメッセージ配信基盤を CloudFormation と Capistrano で](http://www.slideshare.net/takipone/675cloudformationcapistrano)
+ * [CloudFormationとSerfで作る全自動インフラ](http://www.slideshare.net/masaomoc1015/cloudformationserf-29075637)
+ * [Infrastructure as Code から Full Reproducible Infrastructure へ](http://www.slideshare.net/daisuke_m/20131210-cmre-growthawsmiyamoto)
+ * [6 リージョン同時 75 万接続のメッセージ配信基盤を 3 日で考えた話](http://www.slideshare.net/satoshi1977/developersio-meetup-01)
+
+***
+
+## Amazon Redshift & EMR & CloudTrail を TableauDesktop
 
  * redbull とポカリ
  * @shinyaa31
@@ -66,8 +75,7 @@
 
 ## EMR with the MapRは何がうれしいの（仮）
 
- * @n3104
-
+ * @n3104 さん
 
 ### EMR
 
@@ -107,7 +115,6 @@
 
  * 運用からみた AWS 以降のハマりどころ
  * 植木さん
-
 
 ### とある web システム
 
@@ -149,14 +156,13 @@
 
 ## CloudWatchで出来ること
 
- * 横田慎介
+ * 横田慎介さん
  * SQS / SNS
 
 ### CloudWatch とは
 
  * 各種リソースの監視
  * 監視データの倉庫
-
 
 ### 用語
 
@@ -255,7 +261,7 @@
 
 ## CloudFormationとSerfで作る全自動インフラ
 
- * @Canelmo
+ * @Canelmo さん
  * aws.rb
 
 ### Cloudformation
