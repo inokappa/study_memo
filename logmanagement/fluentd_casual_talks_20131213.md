@@ -3,8 +3,9 @@
  * 2013/12/13 19:00 ~ 21:00
  * DeNA
 
-## @tagomoris / norikraの話
+## @tagomoris さん/ norikraの話
 
+ * [資料](http://www.slideshare.net/tagomoris/fluentpluginnorikra-fluentdcasual)
  * fluent-plugin-norikra
 
 ###  なに？
@@ -16,7 +17,7 @@
  * ストリーム対して SQL で検索出来る
  * 結果も JSON で返ってくる
 
- ### 詳細
+### 詳細
 
  * time_batch => 時間でバッチ処理をする
  * クエリが追加されたらその結果も追加で出力される
@@ -36,14 +37,15 @@
   * とりあえず使ってみようのヒト向け
 
 ***
-## @sonots /  (DeNA枠)Fluentdでshadowサーバ用意したら捗った話
+## @sonots さん/  (DeNA枠)Fluentdでshadowサーバ用意したら捗った話
 
+ * [資料](http://www.slideshare.net/sonots/shadow-fluentdcasualtalks-20131213)
  * Haikanko
  * Fluentd クラスタ管理ツール（Fluentd の設定ファイルを自動生成）
  * Yohoushi
  * どんどん課金して下さい
 
-### DNA の導入事例
+### DeNA の導入事例
 
  * ログ監視
  * ログの可視化
@@ -73,7 +75,7 @@
  * 読み込み
   * fluent-agent-lite 56 万行/sec
   * in_tail 15 万行/sec
-  * in_tail 15 万行/sec
+  * in_tail_ex 15 万行/sec
   * v11 15 万行/sec
  * チャンクにためて TCP を開いておくって、閉じる
 
@@ -96,8 +98,9 @@
 
 ***
 
-## @stanaka / fluentd go implementation (仮)
+## @stanaka さん / fluentd go implementation (仮)
 
+ * [資料](://speakerdeck.com/stanaka/alternative-fluentd-implementation-in-go)
  * Go で Fluentd を実装した
  * from hatena
  * LTSV
@@ -132,7 +135,7 @@
 
 ***
 
-## @okahashi117 / Windows版fluentdで幸せになれますか
+## @okahashi117 さん / Windows版fluentdで幸せになれますか
 
  * Windows 版！
 
@@ -163,8 +166,9 @@
  * 是非、お試しください
  * 本番で使っちゃダメ
 
-## @kzk_mover / Fluentd のモニタリングのはなし
+## @kzk_mover さん / Fluentd のモニタリングのはなし
 
+ * [資料](http://www.slideshare.net/treasure-data/treasure-agent-monitoring-service)
  * ちゃんとモニタリングをやりましょう
  * データ解析の世界をシンプルに
  * 世界中で使われている！
@@ -200,15 +204,17 @@
  * ベータリリース
  * 要フィードバック
 
-## @kenjiskywalker / 増えすぎた設定ファイルの行数をどうするかみたいな話をChefのcookbookとくっつけて（LT 枠）
+## @kenjiskywalker さん / 増えすぎた設定ファイルの行数をどうするかみたいな話をChefのcookbookとくっつけて（LT 枠）
 
+ * [資料](https://speakerdeck.com/kenjiskywalker/large-td-agent-dot-conf-with-chef)
  * td-agent.conf を chef で管理する
  * include ディレクティブ
  * include_recipe
  * S3 の情報を data_bags に置く
 
-## @yoshi_ken / Fluentd as a Middleware Engine
+## @yoshi_ken さん / Fluentd as a Middleware Engine
 
+ * [リリースノート](://github.com/y-ken/yamabiko/releases/tag/2013.12.13)
  * MySQL のテーブルを Elasticsearch にレプリケート？
  * Yamabiko（既存の Ruby や td-agent と鑑賞しない）
  * MySQL から Elasticsearch にデータを流す（非同期に）
@@ -225,53 +231,65 @@
  * MySQL との並行運用
  * 全文検索
 
-## @bash0C7 / ご家庭でfluentd
+## @bash0C7 さん / ご家庭でfluentd
 
+ * [関連記事](http://qiita.com/bash0C7/items/a8aea4810cc5ec6f1eb9)
  * pixiv
  * 38 億 pv
- * Macbook Air to ラズベリー・パイ
- * AWS SQS から pop
+ * Macbook Air to ラズベリー・パイ(AWS SQS から pop)
+ * アイドルの画像を集めて tumblr に投稿
+ * おお！楽しそう！
  * 楽しく使いましょう
 
-## @kazegusuri / OutputとBufferedOutputの間をうめる
+## @kazegusuri さん / OutputとBufferedOutputの間をうめる
 
+ * [資料](https://speakerdeck.com/kazegusuri/outputtobufferedoutputfalsejian-falsehe-ka)
  * BufferdOutput プラグイン
  * Output プラグイン
  * 二つの間を満たすなにか？
  * fluent-plugin-bufferize
  * Outpu プラグインに以下の機能を付与する
 
-## @choplin / postgres関連の何か
+## @choplin さん / postgres関連の何か
 
- * postgresSQL
+ * PostgreSQL
  * JSON 型 + fluent-plugin-pgjson
  * pg_msgpack
- * mongoDB は遅い
+ * mongoDB は遅い（一部の指標を除く)
 
-## @frsyuki  / v11 の話
+## @frsyuki さん / v11 の話
 
+ * [資料](http://www.slideshare.net/frsyuki/whats-new-fluentd-casual-talks-3?utm_source=dlvr.it&utm_medium=twitter)
 
- * 無停止再起動
+### 無停止再起動
+
  * woker の中で tcp listen
  * v11 で supervisor で tcp listen
 
- * multi process 化
+### multi process 化
+
  * <worker> タグ
  * それぞれの worker の中で異なるプラグインを動かすことが出来る
 
- * エラーストリーム
+### エラーストリーム
+
  * <label @ERROR> タグ
- * プラグインのバージョン管理
+
+###  プラグインのバージョン管理
+
  * Gemfile を /etc/td-agent に置くとプラグインのバージョン管理が出来る
  * Gem "fluentd" って書くと新しい fluentd を使うことが出来る
 
- * ログレベル
+### ログレベル
+
  * プラグインごとに log_level を分けることが出来る
 
- * 変数を埋め込める
+### 変数を埋め込める
+
  * タグの書き換えが要らない
 
- * リリース
+### リリース
+
  * gem install fluentd -v 0.11.0.preview1
 
 ***
