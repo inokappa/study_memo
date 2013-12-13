@@ -1,3 +1,8 @@
+# fluentd Casual Talks #3
+
+ * 2013/12/13 19:00 ~ 21:00
+ * DeNA
+
 ## @tagomoris / norikraの話
 
  * fluent-plugin-norikra
