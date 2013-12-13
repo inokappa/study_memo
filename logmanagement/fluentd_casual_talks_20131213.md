@@ -256,6 +256,7 @@
  * JSON 型 + fluent-plugin-pgjson
  * pg_msgpack
  * mongoDB は遅い（一部の指標を除く)
+ * mongoDB の capped collection もそれほど速くない？
 
 ## @frsyuki さん / v11 の話
 
