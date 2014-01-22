@@ -17,7 +17,7 @@
 
 >If you want an EC2 cluster that spans multiple regions and availability zones, do not use the DataStax AMI. Instead, install Cassandra on your EC2 instances as described in Installing Cassandra Debian packages, and then configure the cluster as a multiple data center cluster.
 
-もし、複数のリージョン、AZ をまたぐ EC2 クラスタを求める場合には `DataStax AMI` は利用しないこと。
+もし、複数のリージョン、AZ をまたぐ EC2 クラスタを求める場合には `DataStax AMI` は利用しないこと。Cassandra の Debian パッケージのインストールの説明に従って、あなたの EC2 インスタンスに Cassandra をインストールし、複数のデータセンターにクラスタを構成する。
 
 >Use the following guidelines when setting up your cluster:
 
