@@ -46,15 +46,20 @@ AWS はデフォルトの `ephemeral disk` の数を 4 つから 2 つに削減�
 
 >Cassandra JBOD support allows you to use standard disks, but you may get better throughput with RAID0. RAID0 splits every block to be on another device so that writes are written in parallel fashion instead of written serially on disk.
 
-Cassandra JBOD support を標準のディスクを使用することができますが、RAID0と利用するとより良いスループットを得ることができます。 RAID0は書き込みが並行して書かれたの代わりに、ディスク上に連続的に書き込まれるように、すべてのブロックが別のデバイス上にあるように分割します。
-
-RAID0 は全てのブロックが別のデバイス上にあるように分割して書き込む。並行して書き込むようにしてディスク上に連続的に書き込むようにする。
+Cassandra JBOD support を標準のディスクを使用することができますが、RAID0と利用するとより良いスループットを得ることができます。 RAID0 はディスク上に連続してデータが書き込まれる代わりに並行して書き込むように全てのブロックが別のデバイス上に分割している。
 
 EBS volumes are not recommended for Cassandra data volumes for the following reasons:
+以下のような理由から EBS ボリュームは Cassandra のデータボリュームとしてはオススメ出来ない。
 
  * EBS volumes contend directly for network throughput with standard packets. This means that EBS throughput is likely to fail if you saturate a network link.
+ * EBS ボリュームは標準的なパケットでネットワークのスループットに直接影響する。
+   これは、EBSのスループットを使用すると、ネットワークリンクが飽和状態の場合に失敗する可能性が高いことを意味します。
+
  * EBS volumes have unreliable performance. I/O performance can be exceptionally slow, causing the system to back load reads and writes until the entire cluster becomes unresponsive.
+ * EBSボリュームの性能は信頼出来ない。 I/O パフォーマンスは、クラスタ全体が応答しない読み書きの負荷の為に例外的に遅くなることがある。
 
 >Adding capacity by increasing the number of EBS volumes per host does not scale. You can easily surpass the ability of the system to keep effective buffer caches and concurrently serve requests for all of the data it is responsible for managing.
+
+ホストごとに EBS ボリュームの数を増やすことではキャパシティのは拡張できない。あなたが簡単に効果的なバッファ·キャッシュを維持して同時にそれが管理を担当すれば、全てのデータのための要求を処理するシステムの能力を超えることができる。
 
 >For more information and graphs related to ephemeral versus EBS performance, see the blog article Systematic Look at EC2 I/O.
