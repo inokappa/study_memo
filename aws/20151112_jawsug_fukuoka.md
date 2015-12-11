@@ -14,6 +14,7 @@
 - 自分が Amazon Elasticsearch Serivce に入門したメモです
 - 運用事例等の役立つ情報は無いかもしれません
 - 本資料に記載された内容の全ては作成時点の内容となります
+- 本資料内で Amazon Elasticsearch Serivce を Amazon ES と省略して記載している部分があります
 
 ## 自己紹介
 
@@ -45,31 +46,44 @@
 - Kibana 入り(はじめから Kibana 入ってます)
 - IAM ポリシーによって安全にクラスタにアクセス出来る
 
-### Amazon Elsticsearch Service について(導入)
+### Amazon Elsticsearch Service について(導入 1)
 
 - Manegement Console からであれば数ステップ
 - 後ほど Demo します
 - クラスタ = ドメイン
 - ドメインを作るところから始める
+- 10 分位でアクセス可能な状態になる
+
+### Amazon Elsticsearch Service について(導入 2)
+
 - インスタンスタイプ
  - T2 テスト、クラスタ管理向け
  - R3 メモリ重視
  - I2 ハイパフォーマンス
  - M3 一般的な利用
+
+### Amazon Elsticsearch Service について(導入 3)
+
 - ドメインのノード数
  - Enable dedicated master => クラスタ管理のみを行うノードを作成する(奇数で用意することを推奨)
  - Enable zone awareness(あうぇあねす) => リージョン内の複数の AZ にノード分散配置する
+
 - Advance setting(今回は特に触れない)
  - rest.action.multi.allow_explicit_index => URL Base のアクセスポリシーを指定
  - indices.fielddata.cache.size => fielddata のキャッシュサイズを指定
+
+### Amazon Elsticsearch Service について(導入 4)
+
 - ストレージ
  - T2 シリーズ以外は Instance Store を選択することができる
  - EBS は Magnetic / GP2 / PIOPS から選択することが出来る
  - EBS のサイズは最低 10GB から最大 35GB まで指定することが出来る
  - スナップショットの時間を指定する（今回は特に指定せずデフォルトのまま）
+
+### Amazon Elsticsearch Service について(導入 5)
+
 - アクセスポリシーの設定
  - IAM や IP で制御することができる(後述)
-- 10 分位でアクセス可能な状態になる
 
 ### Amazon Elsticsearch Service について(管理)
 
@@ -194,5 +208,8 @@
 - 簡単構築、運用管理のコストは下がると思う
 - 基本的な操作は Rest API で出来るので普通の Elasticsearch となんら遜色が無い
 - 但し、利用が制限されている API があるので注意
-- インデックスの Mapping についても自分で面倒を見る必要がある(任意に定義出来る)
-- Kibana 同梱は嬉しいが自分でプラグインインストールできなさそうなのは辛い
+- インデックスの Mapping についても自分で面倒を見る必要がある(逆に言うと任意に定義出来る)
+- Kibana 同梱は嬉しいが自分でプラグインインストールできなさそうなのは辛いけど我慢しよう
+- Lambda との連携が理想的だけどアクセスポリシーと併用する際には注意が必要(SDK が対応してくれると嬉しい)
+
+質問...はお手柔らかに...
