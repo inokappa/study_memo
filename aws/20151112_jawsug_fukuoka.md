@@ -24,6 +24,7 @@
 
 ### その前に Elasticsearch とは
 
+- https://speakerdeck.com/johtani/elasticsearchfalseshao-jie-tote-zheng-cross-2015
 - スキーマフリー
 - 分散ドキュメントストア
 - REST & API
@@ -87,7 +88,7 @@
 
 ### Amazon Elsticsearch Service について(管理)
 
-- CloudWatch でモニタリング
+- モニタリングは CloudWatch で
 - 必要に応じて手動でスケールアウトすることができる
 - スナップショット
  - デフォルトでは自動的に取得される
