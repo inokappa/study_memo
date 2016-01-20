@@ -1,18 +1,18 @@
-# Amazon EC2 Container Service と EC2 Container Registry つまみぐい + おまけ
+# Amazon EC2 Container Service と EC2 Container Registry 調べてみたメモ + おまけ
 
 ## アジェンダ
 
 - 注意
 - 自己紹介
-- 俺の Amazon ECS & ECR 入門
-- 俺の Amazon ECS & ECR 一問一答
+- Amazon ECS & ECR 入門
+- Amazon ECS & ECR 疑問
 - おまけ
 - 終わり
 
 ## 注意
 
 - 私個人が独自の観点で Amazon EC2 Container Service と Amazon EC2 Container Registry について調べたメモです
-- 運用事例等の役立つ情報は無いかもしれません
+- 運用事例等はありません、すいません
 - 本資料に記載された内容の全ては作成時点の内容となります
 - 本資料内で Amazon EC2 Container Service を Amazon ECS と Amazon EC2 Registry を Amazon ECR と省略して記載している部分があります
 
@@ -20,17 +20,33 @@
 
 - 川原洋平(@inokara)
 
-## 俺の Amazon ECS & ECR 入門
+## Amazon ECS & ECR 入門
 
 ### Amazon ECS とは
 
-####  概要
+#### 二言で言うと
 
-- マネージドなクラスタ管理
-- スケジューリング
-- AWS の各種サービスとシームレスな連携
+- EC2 上で Docker コンテナのクラスタを運用管理出来るサービス
+- ざっくり言うと AWS が提供する Docker Machine / Docker Swarm / Docker Compose そして Docker Hub
 
-#### 構成要素と用語
+(図)
+
+- Container Instance が Docker Machine
+- Task Definition が Docker Compose
+- Run Task や Service が Docker Swarm
+- EC2 Container Registry が Docker Hub
+
+#### 概要
+
+- Docker サポート
+- フルマネージドなクラスタ管理
+- リソースのスケジューリング
+- AWS の各種サービスとの連携
+- プライベートリポジトリ(new!)
+
+#### 図を見て解る ECS の構成要素
+
+(図)
 
 - Cluster
  - Container Instance の集合
@@ -39,15 +55,16 @@
  - コンテナが起動するインスタンス
  - VPC 内で任意のインスタンスを利用することが出来る
  - Amazon ECS optimized AMI が提供されている
- - ECS Ageent を動かすことが出来れば Ubuntu 等のインスタンスでも OK
+ - ECS Agent を動かすことが出来れば Ubuntu 等の EC2 インスタンスでも OK(試してみたところ OK でした)
 - ECS Agent
  - Amazon ECS Endpoint との通信を行うエージェント
  - こやつも Docker コンテナで Go で実装されている
  - Docker Hub で提供されている
 - Task Definition
- - コンテナの設定を JSON ファイルで定義したもの
- - コンテナリソースを(CPU/Memory/Port)定義
- - ボリュームも定義することが可能
+ - 以下のようなコンテナの設定を JSON ファイルで定義したもの
+  - コンテナイメージ
+  - コンテナリソースを(CPU ユニット数/Memory/Port)
+  - ボリューム
  - docker run する時のオプションを予め定義するイメージ
 - Task
  - Task Definition が展開されたもの
@@ -60,7 +77,7 @@
  - 単体のコンテナを docker run するイメージ
 - Service
  - Web サービス等の長期稼働するアプリケーションで利用する
- - スケジューラが Task の数を維持してくれる
+ - スケジューラが Task の数を維持してくれる(Desired number of Task で設定した数を意地する)
  - Task Definition をデプロイしながら Task を切替することが出来る
  - ELB との連携が可能
 
@@ -88,10 +105,10 @@
 #### 構成要素と用語
 
 - Docker のサポート
- - Docker Registry HTTP API V2
- - ECS に限らず様々な Docker 環境から利用出来る
+ - Docker Registry HTTP API V2 互換
+ - ECS に限らず様々な Docker 環境から利用可能
 - 高可用性と耐久性
- - コンテナイメージは S3 に保存される
+ - コンテナイメージは S3 に保存
 - アクセスコントロール
  - IAM を利用してコンテナイメージへのアクセスを制御出来る
 - 暗号化
@@ -114,42 +131,71 @@
 
 ***
 
-## Amazon ECS & ECR つまみ食い
+## Amazon ECS & ECR の個人的に気になるところ
 
-### コンテナのログを CloudWatch Logs に飛ばしたい
+### Logging
 
+#### 概要
+
+- Logger Container を別途用意する
+- Docker の Logging Driver を利用する
+
+#### Logging Driver を指定してコンテナログを Fluentd に飛ばしたい
+
+- 以下のように Task Definition で定義する
+
+#### Logging Driver を指定してコンテナログを CloudWatch Logs に飛ばしたい
+
+- Task Difinition で定義することは現時点では出来ないので実質 ECS からは利用出来ない
 - Docker の Logging Driver で CloudWatch がサポートされた
 - Docker 1.9 からサポートされた(Fluentd は Docker 1.8 から)
 - Amazon ECS Optimized Amazon Linux でも Docker 1.9.1 がサポートされたのであまり意識せずに飛ばせるようになったはず
 - Container Insntance に以下の IAM Policy をアタッチしておく
 - デフォルトではコンテナ ID が Log Stream 名となる
-- 同一の Log Stream に複数のコンテナからログを送ることは非推奨(パフォーマンスに影響が出るとのこと)
-- Task Difinition で定義することは現時点では出来ないので注意
 
-### コンテナのモニタリング
+### Monitoring
 
-- CloudWatch
- - コンテナそのもののモニタリングはサポートされていない
- - Container Instance
- - Cluster 及び Service 全体の CPU とメモリの使用率を確認することが出来る
-- その他のサードパーティ製ツール
- - Datadog
- - Mackerel
+#### CloudWatch
 
-### プライベートリポジトリを構築したい
+- コンテナそのもののモニタリングはサポートされていない
+- Container Instance のモニタリング(EC2 で収集出来るメトリクスは従来通り取得出来る)
+- Cluster 及び Service 全体の CPU とメモリの使用率を確認することが出来る
 
-- Amazon ECR 一択では無いが、個人的には Amazon ECR オススメ(但し、us-east-1 のみ展開されているので注意)
+#### その他のツール
+
+- docker stats(コマンドラインツール)
+- Datadog
+- Mackerel
+
+### Private Repository
+
+#### Amazon ECR
+
+- 個人的には Amazon ECR オススメ
+- 但し、us-east-1 のみ展開されているので注意、東京リージョンリリースを待ちたい
+
+#### Docker Registry
+
 - ECS クラスタ内にプリベートリポジトリを構築することが出来る
 
-### ECS 以外から ECR を利用したい
+### Docker の Dynamic Port Mapping
 
-####  Elastic Beanstalk で利用する
+- ELB と Dynamic Port Mapping が連携出来できない
+- Port を固定する必要がある
+- ELB 側の制約により実現出来ない
+- Dynamic Port Mapping を有効活用するには Consul や registrator 等の外部ツールを利用する必要がある
+
+### ECR を利用したい
+
+#### Elastic Beanstalk で利用する
+
+- Demo
+
 #### 普通の Docker から利用する
 
-### ELB と Dynamic Port Mapping
+- Demo
 
-- ELB と Dynamic Port Mapping が連携出来ると嬉しいけど...
-- ELB 側の制約により実現出来ない
+***
 
 ## 一旦、終わり
 
@@ -158,6 +204,7 @@
 ### 参考
 
 - http://www.slideshare.net/AmazonWebServicesJapan/aws-blackbelt-2015-ecs
+- http://www.slideshare.net/hawinternational/jenkinsamazon-ecs-ci-56080630
 
 ***
 
