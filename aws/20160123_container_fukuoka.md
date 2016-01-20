@@ -11,7 +11,7 @@
 
 ## 注意
 
-- 私個人が独自の観点で Amazon EC2 Container Service と Amazon EC2 Container Registry について調べたメモです
+- 私個人が独自の観点で Amazon EC2 Container Service と Amazon EC2 Container Registry について調べたメモを紹介させて頂きます
 - 運用事例等はありません、すいません
 - 本資料に記載された内容の全ては作成時点の内容となります
 - 本資料内で Amazon EC2 Container Service を Amazon ECS と Amazon EC2 Registry を Amazon ECR と省略して記載している部分があります
